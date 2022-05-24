@@ -6,9 +6,14 @@ $ docker run --name=brat -d -p 80:80 -v {/path/to/your/cloned/data/git/folder}:/
 ```
 `{/path/to/your/cloned/data/git/folder}` needs to be replaced with the local path to your data folder containing the files you want to annotate (it can be a git clone but doesn't have to be).
 To run the container you need to specify a username, password and email address for BRAT as environment variables when you start the container. This user will have editor permissions. 
-Visit http://localhost:80 to login with your supplied username and password and start annotating. Brat automatically changes the `.ann` files. Those changes can be committed using git in the respective folder as usual.
+
+Visit http://localhost:80, login with your supplied username and password and start annotating. Brat automatically creates and changes `.ann` files containing the annotation. Those changes can be committed using git in the respective folder as usual.
 
 To use another port for the BRAT installation use e.g. `-p 8081:80` and point the browser to http://localhost:8081.
+
+The `annotation.conf` file containing the BRAT annotation specification should be supplied in the respective data folder on the top-level of the sub-folders. If you added or made changes to the `annotation.conf` you can restart the docker container using `docker stop brat` and `docker start brat` for the annotation changes to be available in brat. 
+
+To remove the brat-docker container stop it using `docker stop brat` and delete it using `docker container rm brat`.
 
 # NOTE
 
