@@ -1,12 +1,14 @@
 # In progress: Running the docker image
 
-To run the container you need to specify a username, password and email address for BRAT as environment variables when you start the container. This user will have editor permissions.
+Run brat-docker with docker installed using the following command:
 ```bash
 $ docker run --name=brat -d -p 80:80 -v {/path/to/your/cloned/data/git/folder}:/bratdata -e BRAT_USERNAME=brat -e BRAT_PASSWORD=brat -e BRAT_EMAIL=brat@example.com anneferger/brat
 ```
-visit localhost:80 to login with your supplied username and password and start annotating. Brat automatically changes the .ann files that can be committed using git in the respective folder as usual.
+`{/path/to/your/cloned/data/git/folder}` needs to be replaced with the local path to your data folder containing the files you want to annotate (it can be a git clone but doesn't have to be).
+To run the container you need to specify a username, password and email address for BRAT as environment variables when you start the container. This user will have editor permissions. 
+Visit http://localhost:80 to login with your supplied username and password and start annotating. Brat automatically changes the `.ann` files. Those changes can be committed using git in the respective folder as usual.
 
-To use another port use e.g. `-p 8081:80` and point the browser to localhost:8081.
+To use another port for the BRAT installation use e.g. `-p 8081:80` and point the browser to http://localhost:8081.
 
 # NOTE
 
